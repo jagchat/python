@@ -51,3 +51,12 @@ print("Another Message: %s" %s)
 print("---------------")
 print(s, end = ",") #equivalent to print(s + ",")
 print("Value of a = %d, b = %d" % (a, b), end = ",")
+print("\n--------------formatting")
+a = 10
+b = 12.344
+s = "jag"
+print(f"{s:15} - {a:5} - {b:10.2f}")
+for x in range(1, 11):
+    print('{0:2d} {1:3d} {2:4d}'.format(x, x*x, x*x*x))
+for x in range(1, 11): #just another way
+    print(repr(x).rjust(2), repr(x*x).rjust(3), repr(x*x*x).rjust(4))
