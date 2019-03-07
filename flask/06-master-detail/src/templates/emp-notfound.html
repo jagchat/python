@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Employee Details
+{% endblock %}
+
+{% block header %}
+  {{ super() }}
+  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        Employee Information
+    </nav>
+{% endblock %}
+
+{% block content %}
+
+<div id="employee-card" class="card border-danger mb-3" style="max-width: 18rem;">
+    <div class="card-header">Emp. info not found...</div>
+    <div class="card-body text-danger">
+        <h5 class="card-title">Employee #{{empno}} not found </h5>
+        <p class="card-text">It looks like you ended up here with some wrong data.  Try again providing valid empno. </p>
+    </div>
+</div>
+
+
+{% endblock %}

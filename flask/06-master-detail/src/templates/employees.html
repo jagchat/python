@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Employees
+{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="/content/css/employees.css" >
+{% endblock %}
+
+{% block header %}
+    {{ super() }}
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        Employees List
+    </nav>
+{% endblock %}
+
+{% block content %}
+
+<table id="employee-list-table" class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Dept.</th>
+        </tr>
+    </thead>
+    <tbody>
+            {% for emp in employees %}
+            <tr>
+                <th scope="row">{{emp['empno']}}</th>
+                <td><a href="/employee/{{emp['empno']}}">{{emp['ename']}}</a></td>
+                <td>
+                    ${{emp['sal']}}
+                    {% if emp['sal'] > 4000 %}
+                        <span style="color: red"><i class="fas fa-caret-up"></i></span>
+                    {% else %}
+                        <span style="color: green"><i class="fas fa-caret-down"></i></span>
+                    {% endif %}
+                </td>
+                <td>{{emp['deptno']}}</td>
+            </tr>
+            {% endfor %}
+    </tbody>            
+</table>
+
+<div id="employee-legend" class="card"  style="max-width: 18rem;">
+    <div class="card-header">
+        Legend
+    </div>
+    <div class="card-body">
+        <span style="color: red"><i class="fas fa-caret-up"></i></span> - above $4000<br>
+        <span style="color: green"><i class="fas fa-caret-down"></i></span> - below $4000    
+    </div>
+</div>
+
+{% endblock %}
