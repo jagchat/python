@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="content/css/app.css" >
+    </head>
+    <body>
+        <img src="content/images/title.png" />
+        <table width='50%'>
+            <thead>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Salary</td>
+                <td>Dept.</td>
+            </thead>
+            <tbody>
+                    {% for emp in employees %}
+                    <tr>
+                        <td>{{emp['empno']}}</td>
+                        <td>{{emp['ename']}}</td>
+                        <td>{{emp['sal']}}</td>
+                        <td>{{emp['deptno']}}</td>
+                    </tr>
+                    {% endfor %}
+            </tbody>            
+        </table>
+
+    </body>
+</html>
