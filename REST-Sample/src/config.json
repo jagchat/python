@@ -1,0 +1,10 @@
+{
+    "host": "0.0.0.0",
+    "port": "6060",
+    "db": {
+        "server": ".\\sql2017",
+        "userid": "sa",
+        "password": "eXpress2017",
+        "database": "SampleDb"
+    }
+}
