@@ -1,7 +1,7 @@
 from uvicorn import Config, Server
 import asyncio
 from app import App
-from config_manager import ConfigManager
+from config_loader import ConfigLoader
 from logger import get_logger
 
 logger = get_logger(__name__)
@@ -9,16 +9,16 @@ logger = get_logger(__name__)
 async def main():
     # Initialize the logger with the specified output and file name
     logger.info("main: started..")
-    config_manager = ConfigManager()
-    config_manager.override_with_env_vars()  # Override config with env vars before loading
-    config = config_manager.get_config()
+    config_loader = ConfigLoader()
+    config_loader.override_with_env_vars()  # Override config with env vars before loading
+    config = config_loader.get_config()
 
     if config is not None:
         api_config = config.get("api", {})
         api_host = api_config.get("host", "127.0.0.1")
         api_port = api_config.get("port", "9000")
         logger.info(f"main: Computed host/port: {api_host}:{api_port}")
-        myapp = App(config_manager)
+        myapp = App(config_loader)
         config = Config(app=myapp, host=api_host, port=int(api_port))
         server = Server(config)
         try:

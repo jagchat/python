@@ -1,13 +1,12 @@
 from fastapi import FastAPI
 import asyncio
 from logger import get_logger
-from config_manager import ConfigManager
 
 class App:
-    def __init__(self, config_manager):
+    def __init__(self, config_loader):
         self.logger = get_logger(__name__)
         self.logger.info("App.init: Started..")
-        self.config_manager = config_manager
+        self.config_loader = config_loader
         self.theapp = FastAPI()
         self.setup_routes()
         self.logger.info("App.init: Completed")
